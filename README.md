@@ -13,7 +13,6 @@ Flexible **R** function _and_ **Stata** `ado` program that produce the side-by-s
 |                               | R implementation              | Stata implementation           |
 |-------------------------------|-------------------------------|--------------------------------|
 | Model-agnostic extraction     | via **broom**                 | parses `e(b)` / `e(V)`         |
-| ≤ 5 robustness models         | ✓                             | ✓                              |
 | Stats returned                | coef, SE, t/z, *p*, 95 % CI, _N_ | same                           |
 | Excel export / append         | **openxlsx**                  | `export excel`                 |
 | Lightweight deps              | broom (+ openxlsx)            | none                           |
