@@ -196,9 +196,11 @@ program define i4results, eclass
             export excel using "`out'", firstrow(variables) replace
             di as text "Exported results to Excel file: `out'"
         }
+        // Always restore the original dataset when writing to file
+        restore
     }
     else {
         di as text "Data with original & robustness comparisons is in memory."
+        // Keep results dataset in memory
     }
-restore
 end
