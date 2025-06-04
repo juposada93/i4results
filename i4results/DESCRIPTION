@@ -1,0 +1,23 @@
+Package: i4results
+Title: Side-by-Side Comparisons of Original and Robustness Models
+Version: 0.1.0
+Authors@R: 
+    person(
+        given   = "Institute for Replication",
+        family  = "i4R",
+        email   = "instituteforreplication@gmail.com",
+        role    = c("aut", "cre")
+    )
+Description: The i4results package provides a convenient function, i4results(),
+  to compare coefficients from one original model and multiple robustness (replication) 
+  models side by side. The results can be returned in a long-format data frame or exported 
+  directly to Excel, with optional appending. This workflow mirrors an equivalent Stata ado 
+  process, excluding the intercept by default and supporting unlimited numbers of models.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+NeedsCompilation: no
+Packaged: 2025-03-20 21:09:50 UTC; jposada
+Author: Institute for Replication i4R [aut, cre]
+Maintainer: Institute for Replication i4R <instituteforreplication@gmail.com>
