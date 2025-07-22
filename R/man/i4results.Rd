@@ -16,7 +16,7 @@ i4results(original_model, robustness_models, out = NULL, append = FALSE)
 A data frame (invisibly) with the combined original and robustness statistics.
 }
 \description{
-Exports side-by-side comparisons of coefficients from one original model and multiple robustness models. Uses \code{broom::tidy} so that many estimator types are supported. Results can optionally be written to Excel.
+Exports side-by-side comparisons of coefficients from one original model and any number of robustness models. Uses \code{broom::tidy} so that many estimator types are supported. Results can optionally be written to Excel.
 }
 \examples{
 \dontrun{
