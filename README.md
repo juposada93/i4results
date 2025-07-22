@@ -2,10 +2,6 @@
 
 Flexible **R** function _and_ **Stata** `ado` program that produce the side-by-side coefficient table required by the **Institute for Replication (I4R)**. Feed an *original* model plus up to five *robustness/replication* models and get a tidy long-format data set—ready for spreadsheets, dashboards, or reports.
 
-<p align="center">
-  <img src="docs/preview.png" alt="preview screenshot">
-</p>
-
 ---
 
 ## Key features
@@ -25,9 +21,10 @@ Flexible **R** function _and_ **Stata** `ado` program that produce the side-by-s
 
 ```r
 # install.packages("remotes")
-remotes::install_github("juposada93/i4results/i4results/", subdir = "R")
+# install from GitHub
+remotes::install_github("juposada93/i4results", subdir = "R")
 # or simply
-source("R/i4results.R")
+source("R/R/i4results.R")
 ```
 
 ### Stata
