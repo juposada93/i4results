@@ -25,7 +25,7 @@ Flexible **R** function _and_ **Stata** `ado` program that produce the side-by-s
 
 ```r
 # install.packages("remotes")
-remotes::install_github("i4r-org/i4results", subdir = "R")
+remotes::install_github("juposada93/i4results/i4results/", subdir = "R")
 # or simply
 source("R/i4results.R")
 ```
