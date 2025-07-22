@@ -1,0 +1,5 @@
+export(i4results)
+importFrom(broom,tidy)
+importFrom(openxlsx,read.xlsx)
+importFrom(openxlsx,write.xlsx)
+importFrom(stats,nobs)
