@@ -29,9 +29,7 @@ i4results <- function(original_model,
   if (!requireNamespace("broom", quietly = TRUE)) {
     stop("Package 'broom' needed for model extraction. Please install it.")
   }
-  if (length(robustness_models) > 5) {
-    stop("You can supply up to 5 robustness models only.")
-  }
+  ## Any number of robustness models can be compared
   
   ## ── Helper para garantizar columnas numéricas ──────────────────────────────
   safe_tidy <- function(model) {

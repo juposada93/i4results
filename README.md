@@ -1,6 +1,6 @@
 # i4results
 
-Flexible **R** function _and_ **Stata** `ado` program that produce the side-by-side coefficient table required by the **Institute for Replication (I4R)**. Feed an *original* model plus up to five *robustness/replication* models and get a tidy long-format data set—ready for spreadsheets, dashboards, or reports.
+Flexible **R** function _and_ **Stata** `ado` program that produce the side-by-side coefficient table required by the **Institute for Replication (I4R)**. Feed an *original* model plus any number of *robustness/replication* models and get a tidy long-format data set—ready for spreadsheets, dashboards, or reports.
 
 ---
 
