@@ -1,16 +1,16 @@
 #' Side-by-side comparison of models
 #'
-#' Extrae coeficientes de un modelo original y varios modelos de robustez usando
-#' [broom::tidy]. Cualquier modelo soportado por `broom` funciona (lm, glm,
-#' glm.nb, coxph, gam, lmer, feols, ...). Los resultados se devuelven como
-#' data.frame o se exportan a Excel.
+#' Extracts coefficients from an original model and any number of robustness
+#' models using [broom::tidy]. Any model supported by `broom` works (lm, glm,
+#' glm.nb, coxph, gam, lmer, feols, ...). Results are returned as a
+#' data.frame or exported to Excel.
 #'
-#' @param original_model  Objeto de modelo ajustado.
-#' @param robustness_models Lista nombrada de modelos adicionales.
-#' @param out   Ruta opcional a un archivo Excel.
-#' @param append Si `TRUE`, agrega a un Excel existente.
+#' @param original_model  Fitted model object.
+#' @param robustness_models Named list of additional models.
+#' @param out   Optional path to an Excel file.
+#' @param append If `TRUE`, append to an existing Excel workbook.
 #'
-#' @return Invisiblemente devuelve un data.frame con las estadísticas combinadas.
+#' @return Invisibly returns a data.frame with the combined statistics.
 #' @export
 #'
 #' @importFrom broom tidy
@@ -22,7 +22,7 @@ i4results <- function(original_model,
                       out    = NULL,
                       append = FALSE) {
   
-  ## ── Dependencias ────────────────────────────────────────────────────────────
+  ## ── Dependencies ────────────────────────────────────────────────────────────
   if (!is.null(out) && !requireNamespace("openxlsx", quietly = TRUE)) {
     stop("Package 'openxlsx' needed for Excel import/export. Please install it.")
   }
@@ -31,7 +31,7 @@ i4results <- function(original_model,
   }
   ## Any number of robustness models can be compared
   
-  ## ── Helper para garantizar columnas numéricas ──────────────────────────────
+  ## ── Helper to ensure numeric columns ──────────────────────────────
   safe_tidy <- function(model) {
     tx <- broom::tidy(model, conf.int = TRUE)
     tx <- tx[!(tx$term %in% "(Intercept)"), ]
@@ -44,13 +44,13 @@ i4results <- function(original_model,
     tx
   }
   
-  ## ── Modelo original ────────────────────────────────────────────────────────
+  ## ── Original model ────────────────────────────────────────────────────────
   o_cmdline <- paste(deparse(original_model$call), collapse = " ")
   o_n       <- tryCatch(stats::nobs(original_model), error = function(e) NA)
   tidy_o    <- safe_tidy(original_model)
   paramlist_all <- tidy_o$term
   
-  ## ── Iterar sobre modelos de robustez ───────────────────────────────────────
+  ## ── Iterate over robustness models ───────────────────────────────────────
   results_list <- list()
   
   for (rep_name in names(robustness_models)) {
@@ -65,7 +65,7 @@ i4results <- function(original_model,
       r_row <- if (p %in% tidy_r$term) {
         tidy_r[tidy_r$term == p, ]
       } else {
-        # Si el término no existe en el modelo de robustez, rellenar NAs
+        # If the term does not exist in the robustness model, fill with NAs
         data.frame(term = p,
                    estimate  = NA_real_,
                    std.error = NA_real_,
@@ -103,7 +103,7 @@ i4results <- function(original_model,
   
   results_df <- do.call(rbind, results_list)
   
-  ## ── Exportar o devolver ─────────────────────────────────────────────────────
+  ## ── Export or return ─────────────────────────────────────────────────────
   if (!is.null(out)) {
     if (append && file.exists(out)) {
       oldres   <- openxlsx::read.xlsx(out)
