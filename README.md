@@ -32,6 +32,8 @@ source("R/R/i4results.R")
 ```stata
 net install i4results , ///
     from("https://raw.githubusercontent.com/juposada93/i4results/main/Stata/") replace
+// then see the documentation
+help i4results
 ```
 
 ---
