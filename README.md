@@ -31,7 +31,7 @@ source("R/R/i4results.R")
 
 ```stata
 net install i4results , ///
-    from("https://raw.githubusercontent.com/i4r-org/i4results/main/Stata/") replace
+    from("https://raw.githubusercontent.com/juposada93/i4results/main/Stata/") replace
 ```
 
 ---
@@ -56,7 +56,7 @@ head(results)
 
 ### Supported R models
 
-Any model that `broom::tidy()` understands can be compared. This includes `lm()` and `glm()`, `MASS::glm.nb()`, `mgcv::gam()`, `survival::coxph()` and many others. If your favourite command isn't supported, please [open an issue](https://github.com/i4r-org/i4results/issues).
+Any model that `broom::tidy()` understands can be compared. This includes `lm()` and `glm()`, `MASS::glm.nb()`, `mgcv::gam()`, `survival::coxph()` and many others. If your favourite command isn't supported, please [open an issue](https://github.com/juposada93/i4results/issues).
 
 
 ### Stata example
@@ -95,7 +95,7 @@ Each row contains one parameter from the original model paired with the correspo
 
 Pull requests are welcome! Open an issue first to discuss major changes.
 
-If a particular estimator is not handled correctly, [open an issue](https://github.com/i4r-org/i4results/issues) so we can improve compatibility.
+If a particular estimator is not handled correctly, [open an issue](https://github.com/juposada93/i4results/issues) so we can improve compatibility.
 ### Run tests (R)
 
 ```r
