@@ -35,11 +35,33 @@ i4results <- function(original_model,
   safe_tidy <- function(model) {
     tx <- broom::tidy(model, conf.int = TRUE)
     tx <- tx[!(tx$term %in% "(Intercept)"), ]
-    
+
     needed <- c("estimate", "std.error", "statistic",
                 "p.value", "conf.low", "conf.high")
+
+    to_numeric <- function(x, n) {
+      if (is.numeric(x)) {
+        return(x)
+      }
+      if (is.list(x)) {
+        x <- unlist(x, recursive = FALSE, use.names = FALSE)
+      }
+      suppressWarnings({
+        x_num <- as.numeric(x)
+      })
+      if (length(x_num) != n) {
+        rep(NA_real_, n)
+      } else {
+        x_num
+      }
+    }
+
     for (col in needed) {
-      if (!col %in% names(tx)) tx[[col]] <- NA_real_
+      if (!col %in% names(tx)) {
+        tx[[col]] <- NA_real_
+      } else {
+        tx[[col]] <- to_numeric(tx[[col]], nrow(tx))
+      }
     }
     tx
   }
